@@ -10,7 +10,7 @@
     "build": "prisma generate && vite build --emptyOutDir",
     "preview": "vite preview",
     "start": "node build/index.js",
-    "serve": "node build/index.js"
+    "serve": "node build/index.js",
   },
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
