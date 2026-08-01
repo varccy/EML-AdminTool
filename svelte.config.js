@@ -1,24 +1,12 @@
-import adapter from '@sveltejs/adapter-node'
-import { sveltePreprocess } from 'svelte-preprocess'
+import adapter from '@sveltejs/adapter-node'; // <--- EZ A FONTOS SOR
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  preprocess: sveltePreprocess(),
-  compilerOptions: {
-    warningFilter: (warning) => !warning.code?.includes('unused')
-  },
-  onwarn: (warning, handler) => {
-    if (warning.code.startsWith('css-unused-selector')) return
-    handler(warning)
-  },
+  preprocess: vitePreprocess(),
   kit: {
-    adapter: adapter({ out: './dist', addressHeader: 'X-Forwarded-For', xffDepth: 1 }),
-    csrf: {
-      trustedOrigins: ['*']
-    }
+    adapter: adapter() // <--- ÉS EZ A BEÁLLÍTÁS
   }
-}
+};
 
-export default config
-
-
+export default config;
